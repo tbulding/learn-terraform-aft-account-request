@@ -2,10 +2,10 @@ module "sandbox" {
   source = "./modules/aft-account-request"
 
   control_tower_parameters = {
-    AccountEmail              = "<ACCOUNT EMAIL>"
+    AccountEmail              = "tbulding+ct+sandbox+test@amazon.com"
     AccountName               = "sandbox-aft"
-    ManagedOrganizationalUnit = "Learn AFT"
-    SSOUserEmail              = "<SSO EMAIL>"
+    ManagedOrganizationalUnit = "AFT"
+    SSOUserEmail              = "tbulding+ct+sandbox+test@amazon.com"
     SSOUserFirstName          = "Sandbox"
     SSOUserLastName           = "AFT"
   }
@@ -22,6 +22,11 @@ module "sandbox" {
   custom_fields = {
     group = "non-prod"
   }
+
+  resource "aws_s3_account_public_access_block" "block_public_access" {
+  block_public_acls   = true
+  block_public_policy = true
+}
 
   account_customizations_name = "sandbox"
 }
