@@ -23,10 +23,5 @@ module "sandbox" {
     group = "non-prod"
   }
 
-  resource "aws_s3_account_public_access_block" "block_public_access" {
-  block_public_acls   = true
-  block_public_policy = true
-}
-
   account_customizations_name = "sandbox"
 }
